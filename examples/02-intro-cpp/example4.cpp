@@ -19,11 +19,30 @@
 #include <algorithm>
 #include "utils.h"
 
-const int SIZE = 1000000000; //1e9
+const int SIZE = 100000000; //1e8
 
 using namespace std;
 
 // implement your class here
+class NumberofEvens {
+private:
+	int *array, size, EvensCount;
+
+public:
+	NumberofEvens(int *a, int s) : array(a), size(s) {}
+
+	int getEvensCount() const {
+		return EvensCount;
+	}
+
+	void calculate() {
+		EvensCount = 0;
+		for(int i = 0; i < size; i++){
+			if(array[i] % 2 == 0)
+				EvensCount++;
+		}
+	}
+};
 
 int main(int argc, char* argv[]) {
 	int *a;
@@ -35,16 +54,19 @@ int main(int argc, char* argv[]) {
 
 	cout << "Starting..." << endl;
 	ms = 0;
-	// create object here
+	// createn object here
+	NumberofEvens objeto(a,SIZE);
+
 	for (int i = 0; i < N; i++) {
 		start_timer();
 
+		objeto.calculate();
 		// call your method here.
 
 		ms += stop_timer();
 	}
-	cout << "result = ";
 	// display the result here
+	cout << "result = " << objeto.getEvensCount() << endl;
 	cout << "avg time = " << setprecision(15) << (ms / N) << " ms" << endl;
 
 	delete [] a;
