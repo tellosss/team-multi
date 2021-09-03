@@ -26,6 +26,34 @@
 using namespace std;
 
 // implement your class here
+class ChecaPrimos {
+private:
+	int *array, size, RaizCuadrada;
+
+public:
+	ChecaPrimos(int *a, int s) : array(a), size(s) {}
+
+	
+
+	void calculate() {
+		RaizCuadrada = 0;
+		for(int i=2; i<size; i++){
+			RaizCuadrada = sqrt(i);
+			bool Bandera = false;
+			for(int j=2; j<=RaizCuadrada; j++){
+				if(i%j==0){
+					//No es primo
+					Bandera = true;
+					break;
+				}
+			}
+			if(Bandera==false){
+				array[i]=1;
+			}
+		}
+		
+	}
+};
 
 int main(int argc, char* argv[]) {
 	int i, *a;
@@ -41,10 +69,13 @@ int main(int argc, char* argv[]) {
 	cout << "Starting..." << endl;
 	ms = 0;
 	// create object here
+	ChecaPrimos objeto(a, TOP_VALUE);
+	
 	for (int i = 0; i < N; i++) {
 		start_timer();
-
 		// call your method here.
+		objeto.calculate();
+		
 
 		ms += stop_timer();
 	}
