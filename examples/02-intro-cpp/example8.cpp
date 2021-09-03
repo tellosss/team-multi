@@ -1,7 +1,7 @@
 // =================================================================
 //
 // File: example5.cpp
-// Author: Pedro Perez
+// Author: Isaac y Tello
 // Description: This file contains the code that implements the
 //				enumeration sort algorithm. The time this implementation
 //				takes ill be used as the basis to calculate the
@@ -23,6 +23,30 @@ const int SIZE = 100000; //1e5
 using namespace std;
 
 // implement your class here
+class enumerationSort {
+private:
+	int *array, size;
+
+public:
+	enumerationSort(int *a, int s) : array(a), size(s) {}
+
+		void ordenar (){
+			int aux[size];
+			for (int i = 0; i < size; i++){
+				int menores = 0;
+				for (int j = 0; j< size; j++){
+					if(array[i]>array[j] || (array[i]==array[j]&&i<j) ){
+						menores+=1;
+					}
+				}
+				aux[menores] = array[i];
+			}
+			for (int k = 0; k<size; k++){
+				array[k] = aux[k];
+			}
+		}
+
+};
 
 int main(int argc, char* argv[]) {
 	int *a;
@@ -35,11 +59,12 @@ int main(int argc, char* argv[]) {
 	cout << "Starting..." << endl;
 	ms = 0;
 	// create object here
+	enumerationSort objeto(a, SIZE);
 	for (int i = 0; i < N; i++) {
 		start_timer();
 
 		// call your method here.
-
+		objeto.ordenar();
 		ms += stop_timer();
 	}
 

@@ -20,7 +20,7 @@
 
 #define SIZE 10000
 
-// implement your code
+// b implement your code
 void enumerationSort (int *arr, int size){
 	int aux[size];
 	for (int i = 0; i < size; i++){
