@@ -1,7 +1,9 @@
 // =================================================================
 //
+// Multiprocesadores: C++
+// Fecha: 4-Septiembre-2021
 // File: example7.cpp
-// Author: Pedro Perez
+// Author(s): Isaac Planter Villalobos A01702962 Sandra Tello Salinas A01703658
 // Description: This file contains the code to brute-force all
 //				prime numbers less than MAXIMUM. The time this
 //				implementation takes will be used as the basis to

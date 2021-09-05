@@ -1,7 +1,9 @@
 // =================================================================
 //
-// File: example5.cpp
-// Author: Isaac y Tello
+// Multiprocesadores: C++
+// Fecha: 4-Septiembre-2021
+// File: example8.cpp
+// Author(s): Isaac Planter Villalobos A01702962 Sandra Tello Salinas A01703658
 // Description: This file contains the code that implements the
 //				enumeration sort algorithm. The time this implementation
 //				takes ill be used as the basis to calculate the

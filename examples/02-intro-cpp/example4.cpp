@@ -1,7 +1,9 @@
 // =================================================================
 //
-// File: example2.cpp
-// Author(s):
+// Multiprocesadores: C++
+// Fecha: 4-Septiembre-2021
+// File: example4.cpp
+// Author(s): Isaac Planter Villalobos A01702962 Sandra Tello Salinas A01703658
 // Description: This file contains the code to count the number of
 //				even numbers within an array. The time this implementation
 //				takes will be used as the basis to calculate the
