@@ -13,10 +13,13 @@
 // purpose.
 //
 // =================================================================
+import java.lang.Math;
 
 public class Example7 {
 	private static final int SIZE = 1_000_000;
-	private boolean array[];
+	private boolean array[], Bandera;
+	private double RaizCuadrada;
+
 
 	public Example7(boolean array[]) {
 		this.array = array;
@@ -25,8 +28,25 @@ public class Example7 {
 	// place yout code here
 
 	public void calculate() {
+		RaizCuadrada = 0;
+		for(int i=2; i<array.length; i++){
+			RaizCuadrada = Math.sqrt(i);
+			Bandera = false;
+			for(int j=2; j<=RaizCuadrada; j++){
+				if(i%j==0){
+					//No es primo
+					Bandera = true;
+					break;
+				}
+			}
+			if(Bandera==false){
+				array[i]=true;
+			}
+		}
 		// place yout code here
 	}
+
+	
 
 	public static void main(String args[]) {
 		boolean array[] = new boolean[SIZE + 1];
@@ -41,12 +61,15 @@ public class Example7 {
 		System.out.println("");
 
 		// Create the object here.
+		Example7 objeto = new Example7(array);
+
 		acum = 0;
 		System.out.printf("Starting...\n");
 		for (int i = 0; i < Utils.N; i++) {
 			startTime = System.currentTimeMillis();
 
 			// Call yout method here.
+			objeto.calculate();
 
 			stopTime = System.currentTimeMillis();
 
