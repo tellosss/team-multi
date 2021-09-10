@@ -16,6 +16,8 @@
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
+import java.io.IOException;
+
 
 public class Example11 {
 	private int src[], dest[], width, height;
@@ -67,7 +69,7 @@ public class Example11 {
 		final BufferedImage destination = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
 		destination.setRGB(0, 0, w, h, dest, 0, w);
 
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+		/*javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                ImageFrame.showImage("Original - " + fileName, source);
             }
@@ -77,6 +79,13 @@ public class Example11 {
             public void run() {
                ImageFrame.showImage("Gray - " + fileName, destination);
             }
-        });
+        });*/
+		try {
+			ImageIO.write(destination, "png", new File("blur.png"));
+			System.out.println("Image was written succesfully.");
+		} catch (IOException ioe) {
+			System.out.println("Exception occured :" + ioe.getMessage());
+		}
+
 	}
 }
