@@ -28,6 +28,7 @@ public class Example7 {
 	// place yout code here
 
 	public void calculate() {
+		// place yout code here
 		RaizCuadrada = 0;
 		for(int i=2; i<array.length; i++){
 			RaizCuadrada = Math.sqrt(i);
@@ -43,7 +44,7 @@ public class Example7 {
 				array[i]=true;
 			}
 		}
-		// place yout code here
+		
 	}
 
 	
