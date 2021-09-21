@@ -1,7 +1,7 @@
 // =================================================================
 //
 // File: Example7.java
-// Author(s):
+// Author(s): Sandra Tello A01703658 Isaac Planter A01702962
 // Description: This file contains the code to brute-force all
 //				prime numbers less than MAXIMUM. The time this
 //				implementation takes will be used as the basis to

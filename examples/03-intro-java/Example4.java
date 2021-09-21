@@ -1,7 +1,7 @@
 // =================================================================
 //
 // File: Example4.java
-// Authors: 
+// Author(s): Sandra Tello A01703658 Isaac Planter A01702962
 // Description: This file contains the code to count the number of
 //				even numbers within an array. The time this implementation
 //				takes will be used as the basis to calculate the
