@@ -1,7 +1,7 @@
 // =================================================================
 //
 // File: Example8.java
-// Author: Pedro Perez
+// Author(s): Sandra Tello A01703658 Isaac Planter A01702962
 // Description: This file implements the enumeration sort algorithm.
 // 				The time this implementation takes will be used as the
 //				basis to calculate the improvement obtained with
