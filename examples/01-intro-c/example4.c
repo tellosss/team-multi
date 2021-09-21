@@ -14,7 +14,7 @@
 #include "utils.h"
 
 // array size
-#define SIZE 1000000000
+#define SIZE 100000000
 
 // implement your code
 int NumberOfEvens(int *arr, int size){
