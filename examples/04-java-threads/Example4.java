@@ -1,7 +1,7 @@
 // =================================================================
 //
 // File: Example4.java
-// Authors:
+// Authors: Tello e Isaac A01703658 A01702962
 // Description: This file contains the code to count the number of
 //				even numbers within an array using Threads.
 //
@@ -38,8 +38,8 @@ public class Example4 extends Thread {
 
 	public static void main(String args[]) {
 		long startTime, stopTime;
-		int array[], block, min = 0;
-		Example2 threads[];
+		int array[], block, evens = 0;
+		Example4 threads[];
 		double ms;
 
 		array = new int[SIZE];
