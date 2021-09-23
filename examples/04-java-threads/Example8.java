@@ -17,34 +17,42 @@ import java.util.Arrays;
 
 public class Example8 extends Thread {
 	private static final int SIZE = 100_000;
-	private int array[], temp[], start, end, depth;
-	private int aux[] = new int[SIZE];
+	private int array[], start, end, aux[];
+	//private int aux[] = new int[SIZE];
 
-	public Example8(int array[], int temp[], int start, int end, int depth) {
+	public Example8(int array[], int start, int end, int aux[]) {
 		this.array = array;
-		this.temp = temp;
 		this.start = start;
 		this. end = end;
-		this.depth = depth;
-		//System.out.println("start = " + start + " end = " + end + " depth = " + depth);
+		this.aux=aux;
 	}
 
-	private void doSort() {
-		for (int i = 0; i < SIZE; i++){
-			int menores = 0;
-			for (int j = 0; j < SIZE; j++){
-				if(array[i]>array[j] || (array[i]==array[j]&&i<j) ){
-					menores+=1;
+	public void run(){
+		
+	
+
+		for (int i = start; i < end; i++) {
+			aux[i] = 0;
+		}
+		for(int i=start;i<end;i++){
+			for(int j=0;j<SIZE;j++){
+				if(array[i]>array[j] | (array[i] == array[j] && j < i)){
+					aux[i] += 1;
 				}
 			}
-			aux[menores] = array[i];
 		}
-		for (int k = 0; k<SIZE; k++){
-			array[k] = aux[k];
+		for (int k = start; k < end; k++) {
+			array[aux[k]] = array[k];
 		}
 	}
 
-	private void mergeAndCopy() {
+	public int[] getSortedArray() {
+		return array;
+	}
+
+
+
+	/*private void mergeAndCopy() {
 		int i, j, k;
 		int mid = start + ((end - start) / 2);
 
@@ -71,9 +79,9 @@ public class Example8 extends Thread {
 		for (i = start; i < end; i++) {
 			array[i] = temp[i];
 		}
-	}
+	}*/
 
-	public void run() {
+	/*public void run() {
 		if (depth == 0) {
 			doSort();
 		} else {
@@ -89,42 +97,53 @@ public class Example8 extends Thread {
 			}
 			mergeAndCopy();
 		}
-	}
+	}*/
 
-	public int[] getSortedArray() {
-		return array;
-	}
+
 
 	public static void main(String args[]) {
+		int block;
+		double ms;
 		int array[] = new int[SIZE];
-		int temp[] = new int[SIZE];
+		int aux[]=new int[SIZE];
 
 		long startTime, stopTime;
-		Example8 obj = null;
-		int depth = (int)(Math.log(Utils.MAXTHREADS) / Math.log(2));
-		double ms;
+		Example8 threads[];
 
 		Utils.randomArray(array);
 		Utils.displayArray("before", array);
+		
+		block = SIZE / Utils.MAXTHREADS;
+		threads = new Example8[Utils.MAXTHREADS];
 
-		System.out.printf("Starting...\n");
+		System.out.printf("Starting with %d threads...\n", Utils.MAXTHREADS);
 		ms = 0;
-		for (int i = 0; i < Utils.N; i++) {
-			startTime = System.currentTimeMillis();
 
-			obj = new Example8(Arrays.copyOf(array, array.length), temp, 0, array.length, depth);
-			obj.start();
-			try {
-				obj.join();
-			} catch (InterruptedException ie) {
-				ie.printStackTrace();
+		for (int j = 1; j <= Utils.N; j++) {
+			for (int i = 0; i < threads.length; i++) {
+				if (i != threads.length - 1) {
+					threads[i] = new Example8(array, (i * block), ((i + 1) * block), aux);
+				} else {
+					threads[i] = new Example8(array, (i * block), SIZE, aux);
+				}
 			}
 
+			startTime = System.currentTimeMillis();
+			for (int i = 0; i < threads.length; i++) {
+				threads[i].start();
+			}
+			for (int i = 0; i < threads.length; i++) {
+				try {
+					threads[i].join();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 			stopTime = System.currentTimeMillis();
-
-			ms += (stopTime - startTime);
+			ms +=  (stopTime - startTime);
 		}
-		Utils.displayArray("after", obj.getSortedArray());
+
+		Utils.displayArray("after", threads[0].getSortedArray());
 		System.out.printf("avg time = %.5f\n", (ms / Utils.N));
 	}
 }
