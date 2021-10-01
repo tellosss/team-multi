@@ -1,13 +1,13 @@
 // =================================================================
 //
 // File: Example8.java
-// Author: Pedro Perez
+// Author: Sandra Tello A01703658 Isaac Planter A01702962
 // Description: This file implements the enumeration sort algorithm.
 // 				The time this implementation takes will be used as the
 //				basis to calculate the improvement obtained with
 //				parallel technologies.
 //
-// Copyright (c) 2020 by Tecnologico de Monterrey.
+// Copyright (c) 2021 by Tecnologico de Monterrey.
 // All Rights Reserved. May be reproduced for any non-commercial
 // purpose.
 //
@@ -50,54 +50,6 @@ public class Example8 extends Thread {
 		return array;
 	}
 
-
-
-	/*private void mergeAndCopy() {
-		int i, j, k;
-		int mid = start + ((end - start) / 2);
-
-		i = start;
-		j = mid;
-		k = start;
-		while (i < mid && j < end) {
-			if (array[i] < array[j]) {
-				temp[k] = array[i];
-				i++;
-			} else {
-				temp[k] = array[j];
-				j++;
-			}
-			k++;
-		}
-		for (; j < end; j++) {
-			temp[k++] = array[j];
-		}
-		for (; i < mid; i++) {
-			temp[k++] = array[i];
-		}
-
-		for (i = start; i < end; i++) {
-			array[i] = temp[i];
-		}
-	}*/
-
-	/*public void run() {
-		if (depth == 0) {
-			doSort();
-		} else {
-			int mid = start + ((end - start) / 2);
-			Example8 left = new Example8(array, temp, start, mid, depth - 1);
-			Example8 right = new Example8(array, temp, mid, end, depth - 1);
-
-			left.start(); right.start();
-			try {
-				left.join(); right.join();
-			} catch (InterruptedException ie) {
-				ie.printStackTrace();
-			}
-			mergeAndCopy();
-		}
-	}*/
 
 
 
