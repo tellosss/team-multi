@@ -1,7 +1,8 @@
 // =================================================================
 //
 // File: example7.c
-// Author(s):
+// Author(s): Sandra Tello A01703658 Isaac Planter A01702962
+// Speedup: 4.46
 // Description: This file contains the code to brute-force all
 //				prime numbers less than MAXIMUM using OpenMP.
 //

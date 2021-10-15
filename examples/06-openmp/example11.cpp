@@ -1,7 +1,8 @@
 // =================================================================
 //
 // File: example11.cpp
-// Author(s):
+// Author(s): Sandra Tello A01703658 Isaac Planter A01702962
+// Speedup: 1.8601
 // Description: This file implements the code that transforms a
 //				grayscale image. Using OpenCV and OpenMP, to compile:
 //				g++ example11.cpp `pkg-config --cflags --libs opencv4` -fopenmp

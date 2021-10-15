@@ -1,7 +1,8 @@
 // =================================================================
 //
 // File: example4.c
-// Author(s):
+// Author(s): Sandra Tello A01703658 Isaac Planter A01702962
+// Speedup: 4.87
 // Description: This file contains the code to count the number of
 //				even numbers within an array using OpenMP.
 //

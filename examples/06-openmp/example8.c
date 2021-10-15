@@ -1,7 +1,8 @@
 // =================================================================
 //
 // File: example7.c
-// Author(s):
+// Author(s): Sandra Tello A01703658 Isaac Planter A01702962
+// Speedup: 4.07
 // Description: This file contains the code that implements the
 //				enumeration sort algorithm using OpenMP.
 //
