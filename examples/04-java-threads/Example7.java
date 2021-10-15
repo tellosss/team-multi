@@ -15,7 +15,7 @@
 // =================================================================
 
 public class Example7 extends Thread {
-	private static final int SIZE = 1_000_000;
+	private static final int SIZE = 1_000_00;
 	private boolean array[], Bandera;
 	private int start, end;
 	private double RaizCuadrada;

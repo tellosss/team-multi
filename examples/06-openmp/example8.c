@@ -18,4 +18,46 @@
 
 #define SIZE 10000
 
+void enumerationSort (int *arr, int size){
+
+    int aux[size];
+    #pragma omp parallel for shared(arr, size)
+        for (int i = 0; i < size; i++){
+            int menores = 0;
+            for (int j = 0; j< size; j++){
+                if(arr[i]>arr[j] || (arr[i]==arr[j]&&i<j) ){
+                    menores+=1;
+                }
+            }
+            aux[menores] = arr[i];
+        }
+        for (int k = 0; k<size; k++){
+            arr[k] = aux[k];
+        }
+
+}
+
+int main(int argc, char* argv[]) {
+	int i, *a;
+	double ms;
+
+	a = (int*) malloc(sizeof(int) * SIZE);
+	random_array(a, SIZE);
+	display_array("before", a);
+
+	printf("Starting...\n");
+	ms = 0;
+	for (i = 0; i < N; i++) {
+		start_timer();
+
+		// call the implemented function
+		enumerationSort(a, SIZE);
+		ms += stop_timer();
+	}
+	display_array("after", a);
+	printf("avg time = %.5lf ms\n", (ms / N));
+
+	free(a);
+	return 0;
+}
 // implement your code

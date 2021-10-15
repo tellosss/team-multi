@@ -1,7 +1,8 @@
 // =================================================================
 //
 // File: Example4.java
-// Authors:
+// Authors: Sandra Tello A01703658 Isaac Planter A01702962
+// Speedup: 0.74
 // Description: This file contains the code to count the number of
 //				even numbers within an array using Java's Fork-Join.
 //

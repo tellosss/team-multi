@@ -27,6 +27,31 @@
 #include "utils.h"
 
 // implement your code
+void grayPixel(cv::Mat &src, cv::Mat &dest, int ren, int col){
+	
+	int side_pixels, cells;
+	float r, g, b, aux;
+
+	r = 0; g = 0; b = 0, aux=0;
+	r = (float) src.at<cv::Vec3b>(ren, col)[RED];
+	g = (float) src.at<cv::Vec3b>(ren, col)[GREEN];
+	b = (float) src.at<cv::Vec3b>(ren, col)[BLUE];
+	aux = (r+g+b)/3;
+
+	dest.at<cv::Vec3b>(ren, col)[RED] =  (unsigned char) (aux);
+	dest.at<cv::Vec3b>(ren, col)[GREEN] = (unsigned char) (aux);
+	dest.at<cv::Vec3b>(ren, col)[BLUE] = (unsigned char) (aux);
+		
+}
+
+void turnGray(cv::Mat &src, cv::Mat &dest) {
+	#pragma omp parallel for shared(src, dest)
+	for(int i = 0; i < src.rows; i++) {
+		for(int j = 0; j < src.cols; j++) {
+			grayPixel(src, dest, i, j);
+		}
+	}
+}
 
 int main(int argc, char* argv[]) {
 	int i;
@@ -48,6 +73,7 @@ int main(int argc, char* argv[]) {
 	for (i = 0; i < N; i++) {
 		start_timer();
 
+		turnGray(src, dest);
 		// call the implemented function
 
 		acum += stop_timer();

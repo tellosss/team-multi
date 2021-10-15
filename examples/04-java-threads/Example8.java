@@ -29,8 +29,6 @@ public class Example8 extends Thread {
 
 	public void run(){
 		
-	
-
 		for (int i = start; i < end; i++) {
 			aux[i] = 0;
 		}
