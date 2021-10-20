@@ -28,7 +28,7 @@ using namespace std;
 using namespace cv;
 using namespace tbb;
 
-class BlurImage {
+class Grayscale {
 private:
 	Mat &src, &dest;
 
