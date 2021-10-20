@@ -10,7 +10,7 @@
 // Copyright (c) 2020 by Tecnologico de Monterrey.
 // All Rights Reserved. May be reproduced for any non-commercial
 // purpose.
-//
+//.
 // =================================================================
 
 #include <iostream>
@@ -27,6 +27,37 @@
 using namespace std;
 using namespace cv;
 using namespace tbb;
+
+class BlurImage {
+private:
+	Mat &src, &dest;
+
+	void grayPixel(int ren, int col) const {
+		float r, g, b, aux;
+
+		r = 0; g = 0; b = 0;
+
+		r = (float) src.at<cv::Vec3b>(ren, col)[RED];
+		g = (float) src.at<cv::Vec3b>(ren, col)[GREEN];
+		b = (float) src.at<cv::Vec3b>(ren, col)[BLUE];
+		aux = (r+g+b)/3;
+
+		dest.at<cv::Vec3b>(ren, col)[RED] =  (unsigned char) (aux);
+		dest.at<cv::Vec3b>(ren, col)[GREEN] = (unsigned char) (aux);
+		dest.at<cv::Vec3b>(ren, col)[BLUE] = (unsigned char) (aux);
+	}
+
+public:
+	Grayscale(Mat &s, Mat &d) : src(s), dest(d) {}
+
+	void operator() (const blocked_range<int> &r) const {
+		for (int i = r.begin(); i != r.end(); i++) {
+			for(int j = 0; j < src.cols; j++) {
+				grayPixel(i, j);
+			}
+		}
+	}
+};
 
 int main(int argc, char* argv[]) {
 	double ms;
@@ -49,7 +80,8 @@ int main(int argc, char* argv[]) {
 		start_timer();
 
 		// place your code here
-
+		Grayscale obj(src, dest);
+		parallel_for(blocked_range<int>(0, src.rows),  obj);
 		ms += stop_timer();
 	}
 
