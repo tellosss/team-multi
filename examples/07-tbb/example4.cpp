@@ -1,7 +1,8 @@
 // =================================================================
 //Hola 
 // File: Example3.cpp
-// Authors:
+// Authors: Sandra Tello A01703658 Isaac Planter A01702962
+// Speedup: 2.939147505
 // Description: This file contains the code to count the number of
 //				even numbers within an array using Intel's TBB.
 //              To compile: g++ example4.cpp -ltbb

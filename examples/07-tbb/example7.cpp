@@ -1,7 +1,8 @@
 // =================================================================
 //
 // File: example7.cpp
-// Author: Pedro Perez
+// Author: Sandra Tello A01703658 Isaac Planter A01702962
+// speedup: 0.12
 // Description: This file contains the code to brute-force all
 //				prime numbers less than MAXIMUM using Intel's TBB.
 //				To compile: g++ example7.cpp -ltbb

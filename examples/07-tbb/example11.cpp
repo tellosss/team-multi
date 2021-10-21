@@ -1,7 +1,8 @@
 // =================================================================
 //
-// File: example10.cpp
-// Author(s):
+// File: example11.cpp
+// Author(s): Sandra Tello A01703658 Isaac Planter A01702962
+// Speedup: 3.464595989
 // Description: This file implements the code that transforms a
 //				grayscale image using Intel's TBB. Uses OpenCV,
 //				to compile:
