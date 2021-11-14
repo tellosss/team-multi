@@ -13,6 +13,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <math.h>
 #include <cuda_runtime.h>
 #include "utils.h"
@@ -27,7 +28,7 @@ __global__ void ChecaPrimos(int*arr, int size){
    RaizCuadrada = 0;
 
    while (tid < SIZE) {
-       RaizCuadrada = sqrt(tid);
+       RaizCuadrada = sqrtf(tid);
 		bool Bandera = false;
 		for(int j=2; j<=RaizCuadrada; j++){
 			if(tid%j==0){
