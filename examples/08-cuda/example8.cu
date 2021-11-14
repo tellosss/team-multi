@@ -42,7 +42,7 @@ __global__ void enumerationSort(int*arr, int*aux, int size){
 
 
 int main(int argc, char* argv[]) {
-	int i, j, *a, *aux *d_a, *d_aux;
+	int i, j, *a, *aux, *d_a, *d_aux;
 	double ms;
 
 	a = (int *) malloc(sizeof(int) * SIZE);
