@@ -17,7 +17,7 @@
 #include <cuda_runtime.h>
 #include "utils.h"
 
-#define MAXIMUM 1000000 //1e6
+#define SIZE 1000000 //1e6
 #define THREADS 256
 #define BLOCKS	MMIN(32, ((SIZE / THREADS) + 1))
 
@@ -77,11 +77,13 @@ int main(int argc, char* argv[]) {
 
 	a = (int *) malloc(sizeof(int) * SIZE);
 	fill_array(a, SIZE);
-    cout << "At first, neither is a prime. We will display to TOP_VALUE:\n";
-	for (i = 2; i < sizeof(a); i++) {
-		cout << i << " ";
+    printf("At first, neither is a prime. We will display to TOP_VALUE:\n");
+	for (i = 2; i < TOP_VALUE; i++) {
+		if (a[i] == 0) {
+			printf("%i ", i);
+		}
 	}
-	cout << "\n";
+	printf("\n");
 
     cudaMalloc( (void**) &d_a, SIZE * sizeof(int) );
 
