@@ -35,9 +35,9 @@ __global__ void enumerationSort(int*arr, int*aux, int size){
 		aux[menores] = arr[tid];
         tid += blockDim.x * gridDim.x;
 	}
-	for (int k = 0; k<size; k++){
-		arr[k] = aux[k];
-	}
+	// for (int k = 0; k<size; k++){
+	// 	arr[k] = aux[k];
+	// }
 }
 
 
