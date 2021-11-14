@@ -79,12 +79,14 @@ int main(int argc, char* argv[]) {
 	a = (int *) malloc(sizeof(int) * SIZE);
 	fill_array(a, SIZE);
     printf("At first, neither is a prime. We will display to TOP_VALUE:\n");
-	for (i = 2; i < TOP_VALUE; i++) {
-		if (a[i] == 0) {
-			printf("%i ", i);
-		}
-	}
-	printf("\n");
+	// for (i = 2; i < TOP_VALUE; i++) {
+	// 	if (a[i] == 0) {
+	// 		printf("%i ", i);
+	// 	}
+	// }
+    // printf("\n");
+    display_array("array", array);
+
 
     cudaMalloc( (void**) &d_a, SIZE * sizeof(int) );
 
@@ -95,9 +97,7 @@ int main(int argc, char* argv[]) {
 
 	    start_timer();
 
-        for (j = 0; j <= SIZE / 2; j++) {
-            ChecaPrimos<<<1, THREADS>>>(d_a, SIZE);
-        }
+        ChecaPrimos<<<1, THREADS>>>(d_a, SIZE);
 
 	    ms += stop_timer();
 	}
