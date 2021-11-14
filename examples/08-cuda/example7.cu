@@ -106,7 +106,7 @@ int main(int argc, char* argv[]) {
     display_array("array", a);
 
     for (i = 2; i < TOP_VALUE; i++) {
-		if (a[i] == 0) {
+		if (a[i] == 1) {
 			printf("%i ", i);
 		}
 	}
