@@ -72,9 +72,9 @@ public:
 		// call your method here.
 		parallel_for(blocked_range<int>(0, SIZE), objeto);
 
-    for (int k = 0; k<SIZE; k++){
-      a[k] = ax[k];
-    }
+		for (int k = 0; k<SIZE; k++){
+			a[k] = ax[k];
+		}
 		ms += stop_timer();
 	}
 

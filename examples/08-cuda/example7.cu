@@ -1,7 +1,7 @@
 // =================================================================
 //
 // File: example7.cu
-// Author(s):
+// Author(s): Isaac Planter A01702962 Sandra Tello A01703658
 // Description: This file contains the code to brute-force all
 //				prime numbers less than MAXIMUM using CUDA.
 //
@@ -45,32 +45,6 @@ __global__ void ChecaPrimos(int*arr, int size){
 
 }
 
-// __global__ void even(int* arr, int size) {
-//   int i, aux, RaizCuadrada;
-//   RaizCuadrada = 0;
-
-//   i = (threadIdx.x * 2);
-//   if (i <= size - 2) {
-//     if (arr[i] > arr[i + 1]) {
-//       aux = arr[i];
-//       arr[i] = arr[i + 1];
-//       arr[i + 1] = aux;
-//     }
-//   }
-// }
-
-// __global__ void odd(int* arr, int size) {
-//   int i, aux;
-
-//   i = (threadIdx.x * 2) + 1;
-//   if (i <= size - 2) {
-//     if (arr[i] > arr[i + 1]) {
-//       aux = arr[i];
-//       arr[i] = arr[i + 1];
-//       arr[i + 1] = aux;
-//     }
-//   }
-// }
 
 int main(int argc, char* argv[]) {
 	int i, j, *a, *d_a;
