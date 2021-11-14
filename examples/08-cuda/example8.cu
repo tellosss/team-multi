@@ -35,9 +35,9 @@ __global__ void enumerationSort(int*arr, int*aux, int size){
 		aux[menores] = arr[tid];
         tid += blockDim.x * gridDim.x;
 	}
-	// for (int k = 0; k<size; k++){
-	// 	arr[k] = aux[k];
-	// }
+	for (int k = 0; k<size; k++){
+		arr[k] = aux[k];
+	}
 }
 
 
@@ -62,9 +62,9 @@ int main(int argc, char* argv[]) {
 	    start_timer();
 
         enumerationSort<<<1, THREADS>>>(d_a, d_aux, SIZE);
-        for (int k = 0; k<SIZE; k++){
-			a[k] = aux[k];
-		}
+        // for (int k = 0; k<SIZE; k++){
+		// 	a[k] = aux[k];
+		// }
 
 	    ms += stop_timer();
 	}
