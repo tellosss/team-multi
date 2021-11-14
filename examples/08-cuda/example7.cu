@@ -27,11 +27,11 @@ __global__ void ChecaPrimos(int*arr, int size){
    int tid = threadIdx.x + (blockIdx.x * blockDim.x);
    RaizCuadrada = 0;
 
-   while (tid < SIZE) {
+   while (tid < size) {
        RaizCuadrada = sqrtf(tid);
 		bool Bandera = false;
 		for(int j=2; j<=RaizCuadrada; j++){
-			if(tid%j==0){
+			if(tid % j==0){
 				//No es primo
 				Bandera = true;
 				break;
@@ -77,15 +77,13 @@ int main(int argc, char* argv[]) {
 	double ms;
 
 	a = (int *) malloc(sizeof(int) * SIZE);
-	fill_array(a, SIZE);
     printf("At first, neither is a prime. We will display to TOP_VALUE:\n");
-	// for (i = 2; i < TOP_VALUE; i++) {
-	// 	if (a[i] == 0) {
-	// 		printf("%i ", i);
-	// 	}
-	// }
-    // printf("\n");
-    display_array("array", a);
+	for (i = 2; i < TOP_VALUE; i++) {
+		if (a[i] == 0) {
+			printf("%i ", i);
+		}
+	}
+    printf("\n");
 
 
     cudaMalloc( (void**) &d_a, SIZE * sizeof(int) );
