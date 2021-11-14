@@ -2,6 +2,7 @@
 //
 // File: example4.cu
 // Author: Isaac Planter A01702962 Sandra Tello A01703658
+// Speedup achieved: 26482.63492
 // Description: This file contains the code to count the number of
 //				even numbers within an array using using CUDA.
 //

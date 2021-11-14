@@ -2,6 +2,7 @@
 //
 // File: example7.cu
 // Author(s): Isaac Planter A01702962 Sandra Tello A01703658
+// Speedup achieved: 29476.52632
 // Description: This file contains the code to brute-force all
 //				prime numbers less than MAXIMUM using CUDA.
 //

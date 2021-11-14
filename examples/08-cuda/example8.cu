@@ -1,7 +1,8 @@
 // =================================================================
 //
 // File: example8.cu
-// Author(s):
+// Author(s): Isaac Planter A01702962 Sandra Tello A01703658
+// Speedup achieved: 55193.38462
 // Description: This file contains the code that implements the
 //				enumeration sort algorithm using CUDA.
 //
