@@ -62,7 +62,7 @@ __global__ void minimum(int *array, int *results) {
 
 int main(int argc, char* argv[]) {
 	int i, *a, *results, pos;
-  int *d_a, *d_r;
+  	int *d_a, *d_r;
 	double ms;
 
 	a = (int *) malloc(sizeof(int) * SIZE);
@@ -74,7 +74,7 @@ int main(int argc, char* argv[]) {
 	printf("Setting value 0 at %i\n", pos);
 	a[pos] = 0;
 
-  results = (int *) malloc(sizeof(int) * BLOCKS);
+  	results = (int *) malloc(sizeof(int) * BLOCKS);
 
 	cudaMalloc( (void**) &d_a, SIZE * sizeof(int) );
 	cudaMalloc( (void**) &d_r, BLOCKS * sizeof(int) );
@@ -105,6 +105,6 @@ int main(int argc, char* argv[]) {
 	cudaFree(d_a);
 
 	free(a);
-  free(results);
+  	free(results);
 	return 0;
 }
