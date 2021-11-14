@@ -85,7 +85,7 @@ int main(int argc, char* argv[]) {
 	// 	}
 	// }
     // printf("\n");
-    display_array("array", array);
+    display_array("array", a);
 
 
     cudaMalloc( (void**) &d_a, SIZE * sizeof(int) );
