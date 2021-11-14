@@ -105,6 +105,8 @@ int main(int argc, char* argv[]) {
     cudaMemcpy(a, d_a, SIZE * sizeof(int), cudaMemcpyDeviceToHost);
     printf("avg time = %.5lf ms\n", (ms / N));
 
+    display_array("array", a);
+
     for (i = 2; i < TOP_VALUE; i++) {
 		if (a[i] == 0) {
 			printf("%i ", i);
