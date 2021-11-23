@@ -35,8 +35,9 @@ __global__ void matrix_matrix(int *m1, int *m2, int *c) {
             }
             c[pos] = acum;
             pos++;
-            tid += blockDim.x * gridDim.x;
+            
         }
+        tid += blockDim.x * gridDim.x;
     }
 }
 
