@@ -20,11 +20,11 @@
 #define RENS    3
 #define COLS    3
 #define THREADS 256
-#define BLOCKS	MMIN(32, (((REN * COLS) / THREADS) + 1))
+#define BLOCKS	MMIN(32, (((RENS * COLS) / THREADS) + 1))
 
 __global__ void matrix_matrix(int *m1, int *m2, int *c) {
     int tid = threadIdx.x + (blockIdx.x * blockDim.x);
-    int j, acum,  sum = 0, pos=0;
+    int i, j, acum, pos=0;
 
 
     while (tid < RENS){
@@ -68,7 +68,7 @@ int main(int argc, char* argv[]) {
 	for (i = 0; i < N; i++) {
 		start_timer();
 
-		matrix_vector<<<BLOCKS, THREADS>>>(d_m1, d_m2, d_c);
+		matrix_matrix<<<BLOCKS, THREADS>>>(d_m1, d_m2, d_c);
 
 		ms += stop_timer();
 	}
