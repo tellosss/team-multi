@@ -32,7 +32,7 @@ __global__ void matrix_vector(int *m, int *b, int *c) {
           sum += (m[(tid * COLS) + j] * b[tid]);
     }
     c[tid] = sum;
-		tid += blockDim.x * gridDim.x;
+	tid += blockDim.x * gridDim.x;
   }
 }
 

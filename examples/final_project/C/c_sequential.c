@@ -29,12 +29,23 @@ void matrix_matrix(int *m1, int *m2, int *c) {
         for (i = 0; i < COLS; i++) {
             acum = 0;
             for (j = 0; j < COLS; j++) {
-                acum += (m1[(i * COLS) + j] * m2[(j*COLS)+i]);
+                acum += (m1[(h * COLS) + j] * m2[(j*COLS)+i]);
             }
-            c[pos] = acum;
+            c[(h*COLS)+i] = acum;
             pos++;
         }
     }
+
+    // for(h=0; h<RENS; h++){
+    //     for (i = 0; i < COLS; i++) {
+    //         acum = 0;
+    //         for (j = 0; j < COLS; j++) {
+    //             acum += (m1[(i * COLS) + j] * m2[(j*COLS)+i]);
+    //         }
+    //         c[pos] = acum;
+    //         pos++;
+    //     }
+    // }
 }
 
 int main(int argc, char* argv[]) {
