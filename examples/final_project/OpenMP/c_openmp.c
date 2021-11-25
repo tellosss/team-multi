@@ -18,24 +18,54 @@
 #include <limits.h>
 #include "utils.h"
 
-#define RENS 3
-#define COLS 3
+#define RENS 300
+#define COLS 300
 
 void matrix_vector(int *m1, int *m2, int *c) {
 	int h, i, j, pos, acum;
+	double wtime;
     pos=0;
 
-    for(h=0; h<RENS; h++){
+	//Algoritmo viejo
+    // for(h=0; h<RENS; h++){
+    //     for (i = 0; i < COLS; i++) {
+    //         acum = 0;
+    //         #pragma omp parallel for shared(m1, m2, i, h) reduction(+:acum)
+    //         for (j = 0; j < COLS; j++) {
+    //             acum += (m1[(i * COLS) + j] * m2[(j*COLS)+i]);
+    //         }
+    //         c[pos] = acum;
+    //         pos++;
+    //     }
+    // }
+
+	//Algoritmo nuevo
+	// for(h=0; h<RENS; h++){
+    //     for (i = 0; i < COLS; i++) {
+    //         acum = 0;
+	// 		#pragma omp parallel for shared(m1, m2, i, h) reduction(+:acum)
+    //         for (j = 0; j < RENS; j++) {
+    //             acum += (m1[(h * COLS) + j] * m2[(j*RENS)+i]);
+    //         }
+    //         c[(h*COLS)+i] = acum;
+    //     }
+    // }
+
+
+	//Algoritmo nuevo 2
+	#pragma omp for
+	for(h=0; h<RENS; h++){
         for (i = 0; i < COLS; i++) {
             acum = 0;
-            #pragma omp parallel for shared(m1, m2, i, h) reduction(+:acum)
-            for (j = 0; j < COLS; j++) {
-                acum += (m1[(i * COLS) + j] * m2[(j*COLS)+i]);
+            for (j = 0; j < RENS; j++) {
+                acum += (m1[(h * COLS) + j] * m2[(j*RENS)+i]);
             }
-            c[pos] = acum;
-            pos++;
+            c[(h*COLS)+i] = acum;
         }
     }
+
+	wtime = omp_get_wtime ( ) - wtime;
+  	printf ( "  Elapsed seconds = %g\n", wtime );
 }
 
 int main(int argc, char* argv[]) {

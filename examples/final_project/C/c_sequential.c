@@ -18,34 +18,35 @@
 #include <limits.h>
 #include "utils.h"
 
-#define RENS 3
-#define COLS 3
+#define RENS 300
+#define COLS 300
 
 void matrix_matrix(int *m1, int *m2, int *c) {
 	int h, i, j,pos, acum;
     pos = 0;
     
+    //Algoritmo nuevo
+    // for(h=0; h<RENS; h++){
+    //     for (i = 0; i < COLS; i++) {
+    //         acum = 0;
+    //         for (j = 0; j < RENS; j++) {
+    //             acum += (m1[(h * COLS) + j] * m2[(j*RENS)+i]);
+    //         }
+    //         c[(h*COLS)+i] = acum;
+    //     }
+    // }
+
+    //Algoritmo viejo
     for(h=0; h<RENS; h++){
         for (i = 0; i < COLS; i++) {
             acum = 0;
             for (j = 0; j < COLS; j++) {
-                acum += (m1[(h * COLS) + j] * m2[(j*COLS)+i]);
+                acum += (m1[(i * COLS) + j] * m2[(j*COLS)+i]);
             }
-            c[(h*COLS)+i] = acum;
+            c[pos] = acum;
             pos++;
         }
     }
-
-    // for(h=0; h<RENS; h++){
-    //     for (i = 0; i < COLS; i++) {
-    //         acum = 0;
-    //         for (j = 0; j < COLS; j++) {
-    //             acum += (m1[(i * COLS) + j] * m2[(j*COLS)+i]);
-    //         }
-    //         c[pos] = acum;
-    //         pos++;
-    //     }
-    // }
 }
 
 int main(int argc, char* argv[]) {
@@ -63,15 +64,15 @@ int main(int argc, char* argv[]) {
 		}
 	}
 
-    printf("M1: ");
-    for(i=0;i<RENS*COLS;i++){
-        printf("%i ", m1[i]);
-    }
-    printf(" \nM2: ");
-    for(i=0;i<RENS*COLS;i++){
-        printf("%i ", m2[i]);
-    }
-    printf("\n");
+    // printf("M1: ");
+    // for(i=0;i<RENS*COLS;i++){
+    //     printf("%i ", m1[i]);
+    // }
+    // printf(" \nM2: ");
+    // for(i=0;i<RENS*COLS;i++){
+    //     printf("%i ", m2[i]);
+    // }
+    // printf("\n");
 
     display_array("m1:", m1);
     display_array("m2:", m2);
@@ -88,9 +89,9 @@ int main(int argc, char* argv[]) {
 	display_array("c:", c);
 
     printf("c: ");
-    for(i=0;i<RENS*COLS;i++){
-        printf("%i ", c[i]);
-    }
+    // for(i=0;i<RENS*COLS;i++){
+    //     printf("%i ", c[i]);
+    // }
 	printf("avg time = %.5lf ms\n", (ms / N));
 
 	free(m1); free(m2); free(c);

@@ -12,8 +12,8 @@
 // =================================================================
 
 public class matrix_matrix_threads extends Thread {
-	private static final int RENS = 3; //Era 20,000
-	private static final int COLS = 3;
+	private static final int RENS = 300; //Era 20,000
+	private static final int COLS = 300;
 	private int m1[], m2[], c[], start, end;
 
 	public matrix_matrix_threads(int m1[], int m2[], int c[], int start, int end) {
@@ -28,16 +28,28 @@ public class matrix_matrix_threads extends Thread {
 		int acum, pos;
         pos=0;
 
-        for(int h=start; h<end; h++){
-            for (int i = 0; i < COLS; i++) {
-                acum = 0;
-                for (int j = 0; j < COLS; j++) {
-                    acum += (m1[(i * COLS) + j] * m2[(j*COLS)+i]);
-                }
-                c[pos] = acum;
-                pos++;
-            }
-        }
+		//Algoritmo viejo
+        // for(int h=start; h<end; h++){
+        //     for (int i = 0; i < COLS; i++) {
+        //         acum = 0;
+        //         for (int j = 0; j < COLS; j++) {
+        //             acum += (m1[(i * COLS) + j] * m2[(j*COLS)+i]);
+        //         }
+        //         c[pos] = acum;
+        //         pos++;
+        //     }
+        // }
+
+		//Algoritmo nuevo
+		for(int h=start; h<end; h++){
+			for (int i = 0; i < COLS; i++) {
+				acum = 0;
+				for (int j = 0; j < RENS; j++) {
+					acum += (m1[(h * COLS) + j] * m2[(j*RENS)+i]);
+				}
+				c[(h*COLS)+i] = acum;
+			}
+    	}
 	}
 
 	public static void main(String args[]) {

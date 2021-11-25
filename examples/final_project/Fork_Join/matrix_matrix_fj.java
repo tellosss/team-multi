@@ -15,8 +15,8 @@ import java.util.concurrent.RecursiveAction;
 import java.util.concurrent.ForkJoinPool;
 
 public class matrix_matrix_fj extends RecursiveAction {
-	private static final int RENS = 30;
-	private static final int COLS = 30;
+	private static final int RENS = 300;
+	private static final int COLS = 300;
 	private static final int MIN = 5_000;
 	private int m1[], m2[], c[], start, end;
 
@@ -32,6 +32,7 @@ public class matrix_matrix_fj extends RecursiveAction {
 		int acum, pos;
         pos=0;
 
+		//Algoritmo viejo
         for(int h=start; h<end; h++){
             for (int i = 0; i < COLS; i++) {
                 acum = 0;
@@ -42,6 +43,17 @@ public class matrix_matrix_fj extends RecursiveAction {
                 pos++;
             }
         }
+
+		//Algoritmo nuevo
+		// for(int h=start; h<end; h++){
+		// 	for (int i = 0; i < COLS; i++) {
+		// 		acum = 0;
+		// 		for (int j = 0; j < RENS; j++) {
+		// 			acum += (m1[(h * COLS) + j] * m2[(j*RENS)+i]);
+		// 		}
+		// 		c[(h*COLS)+i] = acum;
+		// 	}
+    	// }
 	}
 
 	@Override

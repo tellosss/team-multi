@@ -29,6 +29,18 @@ public class matrix_matrix {
 		int acum, pos;
         pos=0;
 
+		//Algoritmo viejo
+		// for(int h=0; h<RENS; h++){
+		// 	for (int i = 0; i < COLS; i++) {
+		// 		acum = 0;
+		// 		for (int j = 0; j < RENS; j++) {
+		// 			acum += (m1[(h * COLS) + j] * m2[(j*RENS)+i]);
+		// 		}
+		// 		c[(h*COLS)+i] = acum;
+		// 	}
+    	// }
+
+		//Algoritmo nuevo
         for(int h=0; h<RENS; h++){
             for (int i = 0; i < COLS; i++) {
                 acum = 0;

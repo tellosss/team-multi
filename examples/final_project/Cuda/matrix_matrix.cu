@@ -37,8 +37,6 @@ __global__ void matrix_matrix(int *m1, int *m2, int *c) {
             }
             // c[pos] = acum;
             c[(tid*COLS)+i]= acum;
-            pos++;
-            
         }
         tid += blockDim.x * gridDim.x;
     }
@@ -56,7 +54,8 @@ int main(int argc, char* argv[]) {
     for (i = 0; i < RENS; i++) {
         for (j = 0; j < COLS; j++) {
             m1[(i * COLS) + j] = (j + 1);
-            m2[(i * COLS) + j] = (j + 1);
+            // m2[(i * COLS) + j] = (j + 1);
+            m2[(i * COLS) + j] = (1);
         }
     }
 
