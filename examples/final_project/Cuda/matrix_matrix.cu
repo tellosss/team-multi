@@ -36,7 +36,7 @@ __global__ void matrix_matrix(int *m1, int *m2, int *c) {
 
             }
             // c[pos] = acum;
-            c[tid*COLS)+i]= acum;
+            c[(tid*COLS)+i]= acum;
             pos++;
             
         }
