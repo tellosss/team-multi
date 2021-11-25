@@ -17,8 +17,8 @@
 #include <cuda_runtime.h>
 #include "utils.h"
 
-#define RENS    3
-#define COLS    3
+#define RENS    300
+#define COLS    300
 #define THREADS 256
 #define BLOCKS	MMIN(32, (((RENS * COLS) / THREADS) + 1))
 
@@ -55,7 +55,7 @@ int main(int argc, char* argv[]) {
         for (j = 0; j < COLS; j++) {
             m1[(i * COLS) + j] = (j + 1);
             // m2[(i * COLS) + j] = (j + 1);
-            m2[(i * COLS) + j] = (1);
+            m2[(i * COLS) + j] = (j + 1);
         }
     }
 
